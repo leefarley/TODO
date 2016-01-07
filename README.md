@@ -1,9 +1,13 @@
+# Demo App
+
+The app used in this comparason is written in nodejs using the expressjs framework. Initially I created it using mongoDb as a backend locally so i could deploy it to AWS and converting the data layer to leverage documentDb when deploying to Azure. The tools used were sublime text for text editing and bower for retrieveing front end assets. 
+
+The app is a simple single page app that has three endpoints to get todo tasks, create todo tasks and to complete todo tasks. The frontend code uses angular to utilize the full MEAN (MongoDb, ExpressJs, AngularJs, NodeJs) stack.
+
 # Cloud Deployment Shootout
 
 Both AWS and Azure provide simular products for deploying web apps but the experience and steps required are very different. AWS provides a set of custom command line tools that hook into you git repository to deploy your current branch. 
 Whereas Azure provides a much wider and range of ways to deploy your web app to the cloud. you can setup a traditional git repo in azure to push you content to (no extra tools required) or have azure point to your current source control to pull changes or even your onedrive account.
-
- 
 
 # AWS
 
@@ -14,6 +18,9 @@ Whereas Azure provides a much wider and range of ways to deploy your web app to 
 * Sign into AWS and navigate to the EC2 service
 * Click on the link to key pairs
 * Create a new key pair
+
+> The key pair will allow us to connect to the EC2 instance that is created as part of the deployment
+
 * Click on your username in the top right of the website and select "Security Credentials"
 * Create a new access key (Access Key ID and Secret Access Key)
 * Save the generated credentials somewhere sercure.
@@ -25,10 +32,9 @@ Whereas Azure provides a much wider and range of ways to deploy your web app to 
 > The ElasticBeanstalk tools will hook into your git branch and deploy the latest commit
 
 * Enter the following command : ```eb init```
-* You will then be prompted for a environment name and  and the Elastic Beanstalk instance that the deployment will generate, the key pair to use and the type of deployment (NodeJS)
+* You will then be prompted for a environment name and the Elastic Beanstalk instance that the deployment will generate, the key pair to use and the type of deployment (NodeJS)
 * You will also be prompted for the Access Key ID and Secret Access Key generated earlier
 * Enter the following command: ```eb create```
-
 
 ## Install mongoDB on the EC2 instance
 * Install Putty tools (http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
@@ -37,7 +43,7 @@ Whereas Azure provides a much wider and range of ways to deploy your web app to 
 * Save the private key in the .ppk format so putty can read it
 * Open the AWS portal and navigate to the EC2 service 
 
-> Elastic Beanstalk automates the process of deploying web applications to EC2 Instances, You could alternativly spin up a EC2 instance and deploy yourself but it would require installing all dependancies manually
+> Elastic Beanstalk automates the process of deploying web applications to EC2 Instances, You could alternativly spin up a EC2 instance and deploy yourself but it would require installing all dependencies manually
 
 * Select your newly deployed instance and get the Public DNS
 * Enter the host name ec2-user@`<Your Public DNS>`
@@ -98,48 +104,12 @@ Whereas Azure provides a much wider and range of ways to deploy your web app to 
 
 * Browse to your deployed web app. 
 
-# Scaffold app 
-
-## Node Setup
-* Download Node (https://nodejs.org/)
-* Install Node
-* Restart any consloe windows to add Node to your PATH.
-
-## Mongo DB Setup
-* Download and install Mongo DB (https://www.mongodb.org/downloads)
-* Open command line and run the following commands
-
-> mkdir C:\mongodb\data\db  
-> "c:\Program Files\MongoDB\Server\3.2\bin\mongod.exe" --dbpath c:\mongodb\data
-
-* leave the command line open while developing.
-
-## Command line setup
-Open another command prompt and run the following commands
-* npm install -g bower express 
-* mkdir todo
-* cd todo
-* express todo
-* node bin/www
-
-
 # References
 * Angular Fullstack Generator (https://github.com/angular-fullstack/generator-angular-fullstack)
 * Deploy a OSS website in Azure (https://azure.microsoft.com/en-us/documentation/articles/web-sites-nodejs-develop-deploy-mac/)
 * DocDB and NodeJs (https://azure.microsoft.com/en-us/documentation/articles/documentdb-nodejs-application/)
-# Notes
+* Installing MongoDb on Amazon EC2(https://github.com/SIB-Colombia/dataportal-explorer/wiki/How-to-install-node-and-mongodb-on-Amazon-EC2)
 
-* Is Azure well set-up for dev/test scenarios on new apps (especially those being built on open source technology)
-* OSS experience on Azure compared to AWS
-* Visual studio experience on Azure compared to AWS
-* What we are missing in visual studio to use as a true cross platform application (compared to our competitive set)? 
-* Is open source more easily connected to AWS?
-* Seems to be a tendency for dev/test to focus on sustaining existing applications vs. focusing on new apps 
-* What kind of OSS applications are being built today (Apache Casandra, Data Stacks, Open Stack, NoSQL) – what are the 1-3 Open Source scenarios happening on the Enterprise side.
-
-
-https://github.com/SIB-Colombia/dataportal-explorer/wiki/How-to-install-node-and-mongodb-on-Amazon-EC2
-https://docs.mongodb.org/ecosystem/platforms/amazon-ec2/
 
  
 

@@ -1,7 +1,7 @@
 var DocumentDBClient = require('documentdb').DocumentClient;
 var docdbUtils = require('./docDbUtils');
 
-function TaskDao(documentDBClient, databaseId, collectionId, callback) {
+function docDbData(documentDBClient, databaseId, collectionId, callback) {
     this.client = documentDBClient;
     this.databaseId = databaseId;
     this.collectionId = collectionId;
@@ -9,9 +9,9 @@ function TaskDao(documentDBClient, databaseId, collectionId, callback) {
     this.collection = null;
 }
 
-module.exports = TaskDao;
+module.exports = docDbData;
 
-TaskDao.prototype = {
+docDbData.prototype = {
     init: function () {
         var self = this;
 

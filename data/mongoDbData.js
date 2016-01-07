@@ -10,18 +10,18 @@ var mongoDbData = function(host, port) {
 };
 
 mongoDbData.prototype.getCollection= function(callback) {
-  this.db.collection('Items', function(error, employee_collection) {
+  this.db.collection('Items', function(error, collection) {
     if( error ) callback(error);
-    else callback(null, employee_collection);
+    else callback(null, collection);
   });
 };
 
-//find all employees
+//find all items
 mongoDbData.prototype.findAll = function(callback) {
-    this.getCollection(function(error, employee_collection) {
+    this.getCollection(function(error, collection) {
       if( error ) callback(error)
       else {
-        employee_collection.find({'complete' : false }).toArray(function(error, results) {
+        collection.find({'complete' : false }).toArray(function(error, results) {
           if( error ) callback(error)
           else {
               var items = results.map(function(item) { return { id: item._id.toHexString(), name: item.name, info: item.info }});
@@ -34,11 +34,11 @@ mongoDbData.prototype.findAll = function(callback) {
 
 //save new item
 mongoDbData.prototype.save = function(item, callback) {
-    this.getCollection(function(error, employee_collection) {
+    this.getCollection(function(error, collection) {
       if( error ) callback(error)
       else {
           item.complete = false;
-        employee_collection.insert(item, function() {
+        collection.insert(item, function() {
           callback(null, item);
         });
       }
@@ -47,10 +47,10 @@ mongoDbData.prototype.save = function(item, callback) {
 
 // find a item
 mongoDbData.prototype.findById = function(id, callback) {
-    this.getCollection(function(error, employee_collection) {
+    this.getCollection(function(error, collection) {
       if( error ) callback(error)
       else {
-        employee_collection.findOne({_id: ObjectID.createFromHexString(id)}, function(error, result) {
+        collection.findOne({_id: ObjectID.createFromHexString(id)}, function(error, result) {
           if( error ) callback(error)
           else callback(null, result)
         });

@@ -8,7 +8,7 @@ angular.module('todoApp', [])
         self = this;
 
         this.loadThings = function () {
-            return this.$http.get('/api/things').then(response => {
+            return this.$http.get('/api/todo').then(response => {
                 this.awesomeThings = response.data;
                 this.selectedThing = null;
             });
@@ -20,14 +20,14 @@ angular.module('todoApp', [])
 
         this.addThing = function () {
             if (this.newThing.name.length > 0) {
-                this.$http.post('/api/things', { name: this.newThing.name, info: this.newThing.info })
+                this.$http.post('/api/todo', { name: this.newThing.name, info: this.newThing.info })
                     .then(() => this.loadThings())
                     .then(() => this.clearNewThing());
             }
         }
 
         this.completeThing = function (id) {
-            this.$http.put('/api/things/complete/' + id)
+            this.$http.put('/api/todo/complete/' + id)
                 .then(() => this.loadThings());
         }
 

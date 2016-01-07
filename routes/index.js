@@ -15,21 +15,21 @@ var DataRepo = require('../data/mongoDbData').mongoDbData;
 var dataRepo = new DataRepo(config.mongoHost, config.mongoPort);
 
 /* GET home page. */
-router.get('/api/things', function(req, res, next) {
+router.get('/api/todo', function(req, res, next) {
   dataRepo.findAll(function (err, data) {
       res.status(200).json(data)
   });
 });
 
 /* POST add item. */
-router.post('/api/things', function(req, res, next) {
+router.post('/api/todo', function(req, res, next) {
   dataRepo.save(req.body, function() {
       res.status(201).json();
   })
 });
 
 /* PUT complete item. */
- router.put('/api/things/complete/:id', function (req, res, next) {
+ router.put('/api/todo/complete/:id', function (req, res, next) {
      dataRepo.findById(req.params.id, function(err, item) {
         dataRepo.complete(req.params.id, item, function() {
             res.status(204).json();
