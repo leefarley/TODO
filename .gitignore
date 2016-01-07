@@ -1,0 +1,11 @@
+node_modules
+.tmp
+.idea
+bower_components
+dist
+npm-debug.log
+.vscode
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
