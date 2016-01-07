@@ -1,21 +1,18 @@
 var express = require('express');
-var DocumentDBClient = require('documentdb').DocumentClient;
-
 var config = require('../config');
 var async = require('async');
 var router = express.Router();
 
+// var DocumentDBClient = require('documentdb').DocumentClient;
+// var DataRepo = require('../data/docDbData');
+// var docDbClient = new DocumentDBClient(config.host, {
+//   masterKey: config.authKey
+// });
+// var dataRepo = new DataRepo(docDbClient, config.databaseId, config.collectionId);
+// dataRepo.init();
 
-var DataRepo = require('../data/docDbData');
-//var DataRepo = require('../data/mongoDbData').mongoDbData;
-
-var docDbClient = new DocumentDBClient(config.host, {
-   masterKey: config.authKey
-});
-
-var dataRepo = new DataRepo(docDbClient, config.databaseId, config.collectionId);
-dataRepo.init();
-//var dataRepo = new DataRepo('localhost', 27017);
+var DataRepo = require('../data/mongoDbData').mongoDbData;
+var dataRepo = new DataRepo(config.mongoHost, config.mongoPort);
 
 /* GET home page. */
 router.get('/api/things', function(req, res, next) {

@@ -5,4 +5,7 @@ config.authKey = process.env.AUTH_KEY || "4OxOlgLyQ5J4iLe7M5SkkBNDQbhANvbtbikK6q
 config.databaseId = "ToDoList";
 config.collectionId = "Items";
 
+config.mongoPort = 27017
+config.mongoHost = 'localhost'
+
 module.exports = config;

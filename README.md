@@ -20,7 +20,7 @@ Whereas Azure provides a much wider and range of ways to deploy your web app to 
 
 ## Deploy app 
 * Open a command prompt in your project directory
-* if you do not have a git repo create one, add the files and commit. 
+* If you do not have a git repo create one, add the files and commit. 
 
 > The ElasticBeanstalk tools will hook into your git branch and deploy the latest commit
 
@@ -97,7 +97,6 @@ Whereas Azure provides a much wider and range of ways to deploy your web app to 
 > git push azure
 
 * Browse to your deployed web app. 
-
 
 # Scaffold app 
 
