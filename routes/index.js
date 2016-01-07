@@ -6,16 +6,16 @@ var async = require('async');
 var router = express.Router();
 
 
-//var DataRepo = require('../data/docDbData');
-var DataRepo = require('../data/mongoDbData').mongoDbData;
+var DataRepo = require('../data/docDbData');
+//var DataRepo = require('../data/mongoDbData').mongoDbData;
 
-// var docDbClient = new DocumentDBClient(config.host, {
-//    masterKey: config.authKey
-// });
+var docDbClient = new DocumentDBClient(config.host, {
+   masterKey: config.authKey
+});
 
-//var dataRepo = new DataRepo(docDbClient, config.databaseId, config.collectionId);
-//dataRepo.init();
-var dataRepo = new DataRepo('localhost', 27017);
+var dataRepo = new DataRepo(docDbClient, config.databaseId, config.collectionId);
+dataRepo.init();
+//var dataRepo = new DataRepo('localhost', 27017);
 
 /* GET home page. */
 router.get('/api/things', function(req, res, next) {

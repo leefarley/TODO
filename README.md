@@ -80,3 +80,18 @@ https://docs.mongodb.org/ecosystem/platforms/amazon-ec2/
 
 # Azure
 
+## Create Azure Website and database
+* Login to the Azure
+* Create a resource group
+* Create a web app in the resource group
+* create a documentDb instance in the resource group
+* Navigate to the webapp and select the continous deployment option 
+* Choose source of local Git Repository
+* Navigate to the properties and select the Git Url
+* Open a command prompt in you project directory
+* If you do not have a git repo create one, add the files and commit.
+* Run the following commands
+
+> git remote add azure `<Your Git Url>`   
+> git push azure
+
